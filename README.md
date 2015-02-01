@@ -13,4 +13,6 @@ it will be created as "Picture.jar" and a bin folder (you don't have to touch th
 
 To run it, in your command line, type:
 
-java -jar Picture.jar path/to/image OR url
+```
+java -jar Picture.jar **path/to/image** OR **url**
+```
