@@ -1,5 +1,5 @@
 This is a photo manipulation program written in Java.
-The purpose of this program is to modify the image's threshold.
+The purpose of this program is to modify the image's threshold (similar to photoshop).
 This program also outputs the image's modified threshold into a text file.*
 
 *Try editting the batman.txt file to see what I mean.
