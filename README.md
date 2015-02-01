@@ -7,7 +7,7 @@ This program also outputs the image's modified threshold into a text file.*
 
 ##Running the Code
 
-To run the file, first navigate to the folder where build.xml exists and compile the 
+**SETUP:** To run the file, first navigate to the folder where build.xml exists and compile the 
 code using the "ant" command to compile the jar file. Once the jar file is compiled, 
 it will be created as "Picture.jar" (a bin folder is also created, but you don't have to touch this).
 
