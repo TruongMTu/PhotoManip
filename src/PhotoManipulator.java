@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 public class PhotoManipulator {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Photo batman = new Photo(args[0]);
+		Photo batman = new Photo("http://cdn3.belfasttelegraph.co.uk/migration_catalog/article25727633.ece/20322/ALTERNATES/h342/Batman");
 		PhotoFrame frame = new PhotoFrame(batman);
 		frame.display();
 	}

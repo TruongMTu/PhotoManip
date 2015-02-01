@@ -21,9 +21,9 @@ import javax.swing.event.*;
  *
  */
 public class PhotoFrame {
-	
+
 	private JFrame frame;
-	private final Photo image;
+	private Photo image;
 	private String filename;
 	private final JPanel pictureBox;
 	private final JPanel sliderBox;
@@ -38,7 +38,6 @@ public class PhotoFrame {
 
 	public void display(){
 		frame = new JFrame();
-
 		frame.setJMenuBar(createMenuBar());
 		JPanel everything = new JPanel(new BorderLayout());
 		pictureBox.add(getJLabel(true));
@@ -118,7 +117,7 @@ public class PhotoFrame {
 
 		return saveMenu;
 	}
-	
+
 	/**
 	 * @return JCheckBox object for switching to outlined image or original image.
 	 */
@@ -136,11 +135,11 @@ public class PhotoFrame {
 					changeImage(false);
 				}
 			}
-			
+
 		});
 		return outline;
 	}
-	
+
 	/**
 	 * @return JMenuItem for exporting image out as string text file.
 	 */
@@ -169,10 +168,59 @@ public class PhotoFrame {
 					}
 				}
 			}
+
+		});
+
+		return exportTextMenu;
+	}
+	
+	/**
+	 * @return JMenuItem object that allows you to choose an image file from a file explorer.
+	 */
+	private JMenuItem openFileImage(){
+		JMenuItem openImage = new JMenuItem (" Open Image from Explorer ");
+		openImage.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FileDialog chooser = new FileDialog(frame,
+						"Use .txt extension.", FileDialog.LOAD);
+				chooser.setVisible(true);
+				if(chooser.getFile() != null){
+					image = new Photo(chooser.getDirectory() + File.separator + chooser.getFile());
+					if(!outlineImage)
+						changeImage(true);
+					else
+						changeImage(false);
+				}
+			}
 			
 		});
-		
-		return exportTextMenu;
+		return openImage;
+	}
+	
+	/**
+	 * @return JMenuItem for option to open an image from a URL.
+	 */
+	private JMenuItem openURLImage(){
+		JMenuItem openURL = new JMenuItem(" Open Image from URL ");
+		openURL.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String msg = JOptionPane.showInputDialog("Enter url for image.");
+				if(msg == null)
+					JOptionPane.showMessageDialog(null, "You didn't enter anything.");
+				else {
+					image = new Photo(msg);
+					if(!outlineImage)
+						changeImage(true);
+					else
+						changeImage(false);
+				}
+			}
+		});
+		return openURL;
 	}
 
 	/**
@@ -198,9 +246,8 @@ public class PhotoFrame {
 		});
 		return slider;
 	}
-	
+
 	/**
-	 * 
 	 * @param change boolean value that will change the image based on swithcing it to original image or outlined.
 	 */
 	private void changeImage(boolean change){
@@ -217,6 +264,8 @@ public class PhotoFrame {
 		JMenu menu = new JMenu("File");
 		menuBar.add(menu);
 		menu.add(createSaveMenu());
+		menu.add(openFileImage());
+		menu.add(openURLImage());
 		menu.add(exportText());
 		return menuBar;
 	}

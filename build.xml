@@ -45,14 +45,11 @@
         </java>
     </target>
     <target depends="build-project" name="create_run_jar">
-        <jar destfile="./Picture.jar">
+        <jar destfile="./Picture.jar" filesetmanifest="mergewithoutmain">
             <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-                <attribute name="Rsrc-Main-Class" value="PhotoManipulator"/>
+                <attribute name="Main-Class" value="PhotoManipulator"/>
                 <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./"/>
             </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
             <fileset dir="./bin"/>
         </jar>
     </target>
