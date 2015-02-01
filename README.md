@@ -11,7 +11,10 @@ To run the file, first navigate to the folder where build.xml exists and compile
 code using the "ant" command to compile the jar file. Once the jar file is compiled, 
 it will be created as "Picture.jar" (a bin folder is also created, but you don't have to touch this).
 
-To run it, in your command line, type:
+To run it the code, in your command line, type:
 
+**java -jar Picture.jar**
 
-java -jar Picture.jar **path/to/image** OR **url**
+**OR**
+
+You can just run the **PhotoManipulator.exe** executable directly.
